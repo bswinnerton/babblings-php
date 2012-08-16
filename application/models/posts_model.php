@@ -55,16 +55,20 @@ class Posts_model extends CI_Model
 	
 	public function addPost()
 	{
-		$this->load->helper('url');
+		//$this->load->helper('url');
+		//$slug = url_title($this->input->post('title'), 'dash', TRUE);
 
-		$slug = url_title($this->input->post('title'), 'dash', TRUE);
-
-		$data = array(
+		// todo: add handler to only run this if image
+		$url = file_get_contents($this->input->post('content'));
+		$extension = pathinfo($this->input->post('content'));
+		$image = 'images/'.uniqid("img").".".$extension['extension'];
+		file_put_contents($image, $url);
+        $data = array (
+			'type' => "image",
+			'content' => "/".$image,  // temporary fix for absolute path
+			'original_path' => $this->input->post('content'),
 			'id_author' => "1",
-			'type' => "text",
-			'status' => "active",
-			'slug' => $slug,
-			'content' => $this->input->post('content')
+			'status' => "active"
 		);
 
 		return $this->db->insert('posts', $data);
