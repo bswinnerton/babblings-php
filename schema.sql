@@ -3,8 +3,7 @@
 -- Table structure for table `accounts`
 --
 
-DROP TABLE IF EXISTS `accounts`;
-CREATE TABLE `accounts` (
+CREATE TABLE IF NOT EXISTS `accounts` (
   `id_account` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(100) CHARACTER SET latin1 NOT NULL,
   `password` varchar(64) CHARACTER SET latin1 NOT NULL,
@@ -25,8 +24,7 @@ CREATE TABLE `accounts` (
 -- Table structure for table `posts`
 --
 
-DROP TABLE IF EXISTS `posts`;
-CREATE TABLE `posts` (
+CREATE TABLE IF NOT EXISTS `posts` (
   `id_post` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `id_author` bigint(20) unsigned NOT NULL,
   `status` varchar(20) CHARACTER SET latin1 NOT NULL DEFAULT 'draft',
