@@ -64,7 +64,7 @@ class Posts_model extends CI_Model
 		$extension = pathinfo($this->input->post('content'));
 		$image = 'images/'.uniqid("img").".".$extension['extension'];
 		file_put_contents($image, $url);
-        $data = array (
+		$data = array (
 			'type' => "image",
 			'content' => "/".$image,  // temporary fix for absolute path
 			'original_path' => $this->input->post('content'),
