@@ -53,7 +53,7 @@ class Posts extends CI_Controller
 		}
 		else
 		{
-			$this->postsModel->addPost();
+			$this->posts_model->addPost();
 			
 			$this->load->view('header');	
 			$this->load->view('posts/success');
