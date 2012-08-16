@@ -5,6 +5,4 @@ application/config/database.php
 application/logs/*
 application/logs/!index.html
 babblings.tmproj
-images/*
-images/!index.html
 thumbs.db
