@@ -15,6 +15,7 @@ class Posts_model extends CI_Model
 			$this->db->select('type, title, content');
 			$this->db->where('is_deleted !=', 1);
 			$this->db->where('status', 'active');
+			$this->db->order_by("date_created", "asc");
 			
 			$query = $this->db->get('posts');
 			return $query->result_array();
