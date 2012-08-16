@@ -41,7 +41,7 @@
 $route['default_controller'] = "posts";
 $route['404_override'] = '';
 
-//$route['posts/(:any)'] = 'posts/view/$1';
+$route['posts/view'] = "posts";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
