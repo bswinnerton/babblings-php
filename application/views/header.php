@@ -4,6 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="Author" content="Brooks Swinnerton, brooks@rockthepost.com" />
 	<title>babblings of thee</title>
+	<link rel="stylesheet" href="/css/reset.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" />
 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
 	<script type="text/javascript" src="/js/jquery.masonry.min.js"></script>
