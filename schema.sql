@@ -34,9 +34,9 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `type` tinytext CHARACTER SET latin1 NOT NULL,
   `title` text CHARACTER SET latin1 NOT NULL,
   `slug` varchar(200) NOT NULL,
-  `excerpt` text CHARACTER SET latin1 NOT NULL,
+  `excerpt` text CHARACTER SET latin1,
   `content` longtext CHARACTER SET latin1 NOT NULL,
-  `original_path` longtext NOT NULL,
+  `original_path` longtext,
   PRIMARY KEY (`id_post`),
   KEY `author` (`id_author`),
   CONSTRAINT `author` FOREIGN KEY (`id_author`) REFERENCES `accounts` (`id_account`)
