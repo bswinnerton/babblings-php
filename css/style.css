@@ -1,0 +1,52 @@
+
+body {
+	background: url(../images/background.jpg) top center no-repeat fixed #fff;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#logo { 
+	margin-top: 20px; 
+	margin-bottom: 40px;
+}
+
+.container {
+	width: 936px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#contentBox {
+	width: 280px;
+	margin: 10px;
+	float: left;
+	box-shadow: 0 5px 14px rgba(0, 0, 0, 0.2);
+	padding: 5px 5px 40px 5px;
+	background-color: #FFF;
+	border: 1px solid #A0A0A0;
+}
+
+#textbar {
+	left: 50%;
+	top: 50%;
+	position: absolute;
+	width: 600px;
+	height: 50px;
+	margin-left: -300px;
+	margin-top: -50px;
+	background: #FFFFFF;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+
+input {
+	width: 574px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 3px;
+	height: 38px;
+	font-size: 28px;
+	text-align: center;
+}
