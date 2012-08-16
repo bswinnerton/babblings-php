@@ -62,7 +62,7 @@ class Posts_model extends CI_Model
 		// todo: add handler to only run this if image
 		$url = file_get_contents($this->input->post('content'));
 		$extension = pathinfo($this->input->post('content'));
-		$image = 'images/'.uniqid("img").".".$extension['extension'];
+		$image = 'images/posts/'.uniqid().".".$extension['extension'];
 		file_put_contents($image, $url);
 		$data = array (
 			'type' => "image",
