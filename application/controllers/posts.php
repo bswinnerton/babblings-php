@@ -24,6 +24,7 @@ class Posts extends CI_Controller
 	public function view($slug)
 	{
 		$data['post'] = $this->posts_model->getPosts($slug);
+		$formattedData['post'] = $this->posts_model->formatPosts($data);
 		
 		if (empty($data['post']))
 		{
@@ -31,7 +32,7 @@ class Posts extends CI_Controller
 		}
 		
 		$this->load->view('header');
-		$this->load->view('posts/view', $data);
+		$this->load->view('posts/view', $formattedData);
 		$this->load->view('footer');
 	}
 	

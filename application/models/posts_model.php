@@ -21,7 +21,7 @@ class Posts_model extends CI_Model
 		}
 		
 		$query = $this->db->get_where('posts', array('id_post' => $slug));
-		return $query->row_array();
+		return $query->result_array();
 	}
 	
 	public function formatPosts($data)

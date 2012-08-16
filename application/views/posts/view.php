@@ -1,3 +1,5 @@
 <div class="container">
-	<div id="contentBox"><?php echo $post['content']; ?></div>
+	<?php foreach ($post as $postItem): foreach ($postItem as $postValue): ?>
+    <div id="contentBox"><?php echo $postValue['content']; ?></div>
+	<?php endforeach; endforeach; ?>
 </div>
