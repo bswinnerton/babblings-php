@@ -34,7 +34,7 @@ class Posts_model extends CI_Model
 				switch ($postItem['type'])
 				{
 					case "image":
-						$postItem['content'] = "<img src=\"".$postItem['content']."\" width=\"280\" />";
+						$postItem['content'] = "<img src=\"http://s3.babblin.gs/images/posts".$postItem['content']."\" width=\"280\" />";
 						break;
 					case "youtube":
 						$postItem['content'] = "<iframe width=\"280\" height=\"158\" src=\"http://www.youtube.com/embed/".$postItem['content']."?showinfo=0\" frameborder=\"0\"></iframe>";
@@ -55,15 +55,27 @@ class Posts_model extends CI_Model
 	}
 	
 	public function addPost()
-	{
+	{	
+		// s3 support
+		$this->load->library('s3');
+		$this->config->load('s3', TRUE);
+		$s3 = new S3();
+		
 		//$this->load->helper('url');
 		//$slug = url_title($this->input->post('title'), 'dash', TRUE);
 
 		// todo: add handler to only run this if image
 		$url = file_get_contents($this->input->post('content'));
 		$extension = pathinfo($this->input->post('content'));
-		$image = 'images/posts/'.uniqid().".".$extension['extension'];
-		file_put_contents($image, $url);
+		$localPath = 'temp/';
+		$s3Path = 'images/posts/';
+		$name = uniqid().".";
+		$image = $name.$extension['extension'];
+		
+		file_put_contents($localPath.$image, $url);
+		$s3->putObject($s3->inputFile($localPath.$image, false), "s3.babblin.gs", $s3Path.$image, S3::ACL_PUBLIC_READ);
+		unlink($localPath.$image);
+		
 		$data = array (
 			'type' => "image",
 			'content' => "/".$image,  // temporary fix for absolute path
