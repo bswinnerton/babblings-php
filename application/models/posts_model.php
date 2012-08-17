@@ -15,7 +15,7 @@ class Posts_model extends CI_Model
 			$this->db->select('type, title, content');
 			$this->db->where('is_deleted !=', 1);
 			$this->db->where('status', 'active');
-			$this->db->order_by("date_created", "asc");
+			$this->db->order_by("date_created", "desc");
 			
 			$query = $this->db->get('posts');
 			return $query->result_array();
@@ -84,6 +84,7 @@ class Posts_model extends CI_Model
 		// Data to be pushed to db
 		$data = array (
 			'type' => "image",
+			'date_created' => date('Y-m-d H:i:s'),
 			'content' => $image,
 			'original_path' => $this->input->post('content'),
 			'id_author' => "1",
