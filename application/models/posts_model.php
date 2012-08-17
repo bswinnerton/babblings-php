@@ -56,7 +56,7 @@ class Posts_model extends CI_Model
 	
 	public function addPost()
 	{	
-		// s3 support
+		// Initialize s3 support
 		$this->load->library('s3');
 		$this->config->load('s3', TRUE);
 		$s3 = new S3();
@@ -65,17 +65,23 @@ class Posts_model extends CI_Model
 		//$slug = url_title($this->input->post('title'), 'dash', TRUE);
 
 		// todo: add handler to only run this if image
-		$url = file_get_contents($this->input->post('content'));
-		$extension = pathinfo($this->input->post('content'));
+		
+		// Format image URI
 		$localPath = 'temp/';
 		$s3Path = 'images/posts/';
 		$name = uniqid().".";
+		$extension = pathinfo($this->input->post('content'));
 		$image = $name.$extension['extension'];
 		
-		file_put_contents($localPath.$image, $url);
+		// Push contents to local file
+		$remoteImage = file_get_contents($this->input->post('content'));
+		file_put_contents($localPath.$image, $remoteImage);
+		
+		// Add to s3 and remove local file
 		$s3->putObject($s3->inputFile($localPath.$image, false), "s3.babblin.gs", $s3Path.$image, S3::ACL_PUBLIC_READ);
 		unlink($localPath.$image);
 		
+		// Data to be pushed to db
 		$data = array (
 			'type' => "image",
 			'content' => $image,
