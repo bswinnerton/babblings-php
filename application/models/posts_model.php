@@ -34,7 +34,7 @@ class Posts_model extends CI_Model
 				switch ($postItem['type'])
 				{
 					case "image":
-						$postItem['content'] = "<img src=\"http://s3.babblin.gs/images/posts".$postItem['content']."\" width=\"280\" />";
+						$postItem['content'] = "<img src=\"http://s3.babblin.gs/images/posts/".$postItem['content']."\" width=\"280\" />";
 						break;
 					case "youtube":
 						$postItem['content'] = "<iframe width=\"280\" height=\"158\" src=\"http://www.youtube.com/embed/".$postItem['content']."?showinfo=0\" frameborder=\"0\"></iframe>";
@@ -78,7 +78,7 @@ class Posts_model extends CI_Model
 		
 		$data = array (
 			'type' => "image",
-			'content' => "/".$image,  // temporary fix for absolute path
+			'content' => $image,
 			'original_path' => $this->input->post('content'),
 			'id_author' => "1",
 			'status' => "active"
