@@ -13,7 +13,7 @@ function formatType(array $post)
 				$postItem['content'] = "<iframe width=\"280\" height=\"158\" src=\"http://www.youtube.com/embed/".$postItem['content']."?showinfo=0\" frameborder=\"0\"></iframe>";
 				break;
 			case "vimeo":
-				$postItem['content'] = "<iframe src=\"http://player.vimeo.com/video/".$postItem['content']."\" width=\"280\" height=\"158\" frameborder=\"0\" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>";
+				$postItem['content'] = "<iframe width=\"280\" height=\"158\" src=\"http://player.vimeo.com/video/".$postItem['content']."\" frameborder=\"0\" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>";
 				break;
 			case "text":
 				$postItem['content'] = "<div id=\"text\">".$postItem['content']."</div>";
