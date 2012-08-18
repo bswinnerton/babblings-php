@@ -6,6 +6,7 @@
 	<title>babblings of thee</title>
 	<link rel="stylesheet" href="/css/reset.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" />
+	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
 	<script type="text/javascript" src="/js/jquery.masonry.min.js"></script>
 	<script type="text/javascript">
