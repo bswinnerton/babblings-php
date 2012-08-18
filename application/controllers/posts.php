@@ -14,8 +14,9 @@ class Posts extends CI_Controller
 	public function index()
 	{
 		$this->load->helper('format');
+		$environment = $this->config->item('storage') === "s3" ? "http://".$this->config->item('bucket', 's3') : "";
 		
-		$data['post'] = formatType($this->posts_model->getPosts(), $this->config->item('bucket', 's3'));
+		$data['post'] = formatType($this->posts_model->getPosts(), $environment);
 		
 		$this->load->view('header');
 		$this->load->view('posts/index', $data);
@@ -26,8 +27,9 @@ class Posts extends CI_Controller
 	public function view($slug)
 	{
 		$this->load->helper('format');
+		$environment = $this->config->item('storage') === "s3" ? "http://".$this->config->item('bucket', 's3') : "/";
 		
-		$data['post'] = formatType($this->posts_model->getPosts($slug), $this->config->item('bucket', 's3'));
+		$data['post'] = formatType($this->posts_model->getPosts($slug), $environment);
 		
 		if (empty($data['post']))
 		{

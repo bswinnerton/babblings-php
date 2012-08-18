@@ -37,8 +37,8 @@ class Posts_model extends CI_Model
 		// todo: add handler to only run this if image
 		
 		// Format image URI
-		$localPath = 'temp/';
-		$s3Path = 'images/posts/';
+		$prettyPath = 'images/posts/';
+		$localPath = ($this->config->item('storage') === "s3" ? 'temp/' : $prettyPath);
 		$name = uniqid().".";
 		$extension = pathinfo($this->input->post('content'));
 		$image = $name.$extension['extension'];
@@ -52,10 +52,13 @@ class Posts_model extends CI_Model
 		$width = $imageData[0];
 		$height = $imageData[1];
 		
-		
-		// Add to s3 and remove local file
-		$s3->putObject($s3->inputFile($localPath.$image, false), $this->config->item('bucket', 's3'), $s3Path.$image, S3::ACL_PUBLIC_READ);
-		unlink($localPath.$image);
+		if ($this->config->item('storage') == 's3')
+		{
+			// Add to s3 and remove local file
+			$s3->putObject($s3->inputFile($localPath.$image, false), $this->config->item('bucket', 's3'), $prettyPath.$image, S3::ACL_PUBLIC_READ);
+			unlink($localPath.$image);
+		}
+
 		
 		// Data to be pushed to db
 		$data = array (

@@ -358,5 +358,17 @@ $config['rewrite_short_tags'] = FALSE;
 $config['proxy_ips'] = '';
 
 
+
+
+/* Application Specific Configurations: */
+
+
+// Storage type: available options are 's3' and 'local'
+$config['storage'] = 'local';
+
+
+/* End Application Specific Configurations */
+
+
 /* End of file config.php */
 /* Location: ./application/config/config.php */
