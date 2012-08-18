@@ -48,4 +48,4 @@
 	</script>
 </head>
 <body>
-<center><img id="logo" src="/images/logo.png" /></center>
+<center><a href="/"><img id="logo" src="/images/logo.png" /></a></center>
