@@ -15,6 +15,8 @@ documentation is located at:
 
 https://github.com/tpyo/amazon-s3-php-class/blob/master/README.txt
 
+Be sure to place this in /application/config/development or /application/config/production once configured
+
 */
 
 /*

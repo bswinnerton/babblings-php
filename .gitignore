@@ -1,11 +1,8 @@
-.DS_Store
-application/cache/*
-application/cache/!index.html
 application/config/database.php
 application/config/development/s3.php
 application/config/production/s3.php
 application/config/s3.php
-application/logs/*
-application/logs/!index.html
-babblings.tmproj
-thumbs.db
+*/logs/log-*.php
+*/logs/!index.html
+*/cache/*
+*/cache/!index.html
