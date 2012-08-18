@@ -4,6 +4,12 @@ function formatType(array $post, $environment, $view)
 {
 	foreach ($post as &$postItem)
 	{
+		if ($postItem["width"] > 960)
+		{
+			$ratio = $postItem["height"] / $postItem["width"];
+			$postItem["width"] = 960;
+			$postItem["height"] = $ratio * 960;
+		}
 		$width = $postItem["width"];
 		$height = $postItem["height"];
 		$ratio = $height / $width;
