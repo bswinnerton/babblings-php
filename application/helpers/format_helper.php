@@ -2,8 +2,6 @@
 
 function formatType(array $post, $environment)
 {
-	echo $environment;
-	
 	foreach ($post as &$postItem)
 	{
 		switch ($postItem['type'])
