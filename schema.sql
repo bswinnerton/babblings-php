@@ -1,8 +1,3 @@
-
---
--- Table structure for table `accounts`
---
-
 CREATE TABLE IF NOT EXISTS `accounts` (
   `id_account` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(100) CHARACTER SET latin1 NOT NULL,
@@ -18,11 +13,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `last_login` datetime NOT NULL,
   `ip_address` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_account`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
---
--- Table structure for table `posts`
---
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 CREATE TABLE IF NOT EXISTS `posts` (
   `id_post` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -37,7 +28,12 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `excerpt` text CHARACTER SET latin1,
   `content` longtext CHARACTER SET latin1 NOT NULL,
   `original_path` longtext,
+  `width` smallint(6) DEFAULT NULL,
+  `height` smallint(6) DEFAULT NULL,
   PRIMARY KEY (`id_post`),
-  KEY `author` (`id_author`),
-  CONSTRAINT `author` FOREIGN KEY (`id_author`) REFERENCES `accounts` (`id_account`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+  KEY `author` (`id_author`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+
+
+ALTER TABLE `posts`
+  ADD CONSTRAINT `author` FOREIGN KEY (`id_author`) REFERENCES `accounts` (`id_account`);

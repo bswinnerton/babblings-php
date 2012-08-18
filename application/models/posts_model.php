@@ -48,18 +48,25 @@ class Posts_model extends CI_Model
 		$remoteImage = file_get_contents($this->input->post('content'));
 		file_put_contents($localPath.$image, $remoteImage);
 		
+		// Get width and height to store in db
+		$imageData = getimagesize($localPath.$image);
+		$width = $imageData[0];
+		$height = $imageData[1];
+		
 		// Add to s3 and remove local file
 		$s3->putObject($s3->inputFile($localPath.$image, false), "s3.babblin.gs", $s3Path.$image, S3::ACL_PUBLIC_READ);
 		unlink($localPath.$image);
 		
 		// Data to be pushed to db
 		$data = array (
-			'type' => "image",
+			'id_author' => "1",
+			'status' => "active",
 			'date_created' => date('Y-m-d H:i:s'),
+			'type' => "image",
 			'content' => $image,
 			'original_path' => $this->input->post('content'),
-			'id_author' => "1",
-			'status' => "active"
+			'width' => $width,
+			'height' => $height
 		);
 
 		return $this->db->insert('posts', $data);
