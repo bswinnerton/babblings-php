@@ -12,7 +12,7 @@ class Posts_model extends CI_Model
 	{
 		if ($slug === FALSE)
 		{
-			$this->db->select('id_post, type, title, content');
+			$this->db->select('id_post, type, title, content, width, height');
 			$this->db->where('is_deleted !=', 1);
 			$this->db->where('status', 'active');
 			$this->db->order_by("date_created", "desc");

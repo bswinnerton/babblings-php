@@ -28,11 +28,9 @@
 			
 			// Masonry plugin
 			var $container = $('.container');
-			$container.imagesLoaded(function(){
-			  $container.masonry({
-			    itemSelector : '#contentBox',
-			    columnWidth : 314
-			  });
+				$container.masonry({
+				itemSelector : '#contentBox',
+				columnWidth : 314
 			});
 			
 			// Submit on enter for posts/create/
