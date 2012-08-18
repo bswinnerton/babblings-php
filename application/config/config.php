@@ -363,7 +363,7 @@ $config['proxy_ips'] = '';
 /* Application Specific Configurations: */
 
 
-// Storage type: available options are 's3' and 'local'
+// Storage type: available options are 's3' and 'local'. Be sure to configure s3 configuration in s3.php
 $config['storage'] = 'local';
 
 
