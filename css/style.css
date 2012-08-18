@@ -13,19 +13,23 @@ body {
 }
 
 .container {
-	width: 936px;
+	width: 942px;
 	margin-left: auto;
 	margin-right: auto;
 }
 
 #contentBox {
-	width: 280px;
+	width: 282px;
 	margin: 10px;
 	float: left;
 	box-shadow: 0 5px 14px rgba(0, 0, 0, 0.2);
 	padding: 5px 5px 40px 5px;
 	background-color: #FFF;
 	border: 1px solid #A0A0A0;
+}
+
+#contentBox img {
+	border: 1px solid #D8D8D8;
 }
 
 #textbar {

@@ -30,7 +30,7 @@
 			$container.imagesLoaded(function(){
 			  $container.masonry({
 			    itemSelector : '#contentBox',
-			    columnWidth : 312
+			    columnWidth : 314
 			  });
 			});
 			
