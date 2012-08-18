@@ -7,6 +7,7 @@ class Posts extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('posts_model');
+		$this->config->load('s3', TRUE);
 	}
 	
 	// View all posts
@@ -14,7 +15,7 @@ class Posts extends CI_Controller
 	{
 		$this->load->helper('format');
 		
-		$data['post'] = formatType($this->posts_model->getPosts());
+		$data['post'] = formatType($this->posts_model->getPosts(), $this->config->item('bucket', 's3'));
 		
 		$this->load->view('header');
 		$this->load->view('posts/index', $data);
@@ -26,7 +27,7 @@ class Posts extends CI_Controller
 	{
 		$this->load->helper('format');
 		
-		$data['post'] = formatType($this->posts_model->getPosts($slug));
+		$data['post'] = formatType($this->posts_model->getPosts($slug), $this->config->item('bucket', 's3'));
 		
 		if (empty($data['post']))
 		{

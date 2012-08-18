@@ -29,7 +29,6 @@ class Posts_model extends CI_Model
 	{	
 		// Initialize s3 support
 		$this->load->library('s3');
-		$this->config->load('s3', TRUE);
 		$s3 = new S3();
 		
 		//$this->load->helper('url');
@@ -53,8 +52,9 @@ class Posts_model extends CI_Model
 		$width = $imageData[0];
 		$height = $imageData[1];
 		
+		
 		// Add to s3 and remove local file
-		$s3->putObject($s3->inputFile($localPath.$image, false), "s3.babblin.gs", $s3Path.$image, S3::ACL_PUBLIC_READ);
+		$s3->putObject($s3->inputFile($localPath.$image, false), $this->config->item('bucket', 's3'), $s3Path.$image, S3::ACL_PUBLIC_READ);
 		unlink($localPath.$image);
 		
 		// Data to be pushed to db

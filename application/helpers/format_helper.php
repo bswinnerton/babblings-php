@@ -1,13 +1,15 @@
 <?php
 
-function formatType(array $post)
+function formatType(array $post, $environment)
 {
+	echo $environment;
+	
 	foreach ($post as &$postItem)
 	{
 		switch ($postItem['type'])
 		{
 			case "image":
-				$postItem['content'] = "<img src=\"http://s3.babblin.gs/images/posts/".$postItem['content']."\" width=\"280\" />";
+				$postItem['content'] = "<img src=\"http://".$environment."/images/posts/".$postItem['content']."\" width=\"280\" />";
 				break;
 			case "youtube":
 				$postItem['content'] = "<iframe width=\"280\" height=\"158\" src=\"http://www.youtube.com/embed/".$postItem['content']."?showinfo=0\" frameborder=\"0\"></iframe>";
