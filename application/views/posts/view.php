@@ -1,5 +1,5 @@
 <div class="container">
-	<?php foreach ($post as $postItem): foreach ($postItem as $postValue): ?>
-    <div id="contentBox"><?php echo $postValue['content']; ?></div>
-	<?php endforeach; endforeach; ?>
+	<?php foreach ($post as $postItem): ?>
+    <div id="contentBox"><?php echo $postItem['content']; ?></div>
+	<?php endforeach; ?>
 </div>

@@ -12,19 +12,21 @@ class Posts extends CI_Controller
 	// View all posts
 	public function index()
 	{
-		$data['post'] = $this->posts_model->getPosts();
-		$formattedData['post'] = $this->posts_model->formatPosts($data);
+		$this->load->helper('format');
+		
+		$data['post'] = formatType($this->posts_model->getPosts());
 		
 		$this->load->view('header');
-		$this->load->view('posts/index', $formattedData);
+		$this->load->view('posts/index', $data);
 		$this->load->view('footer');
 	}
 	
 	// View single post
 	public function view($slug)
 	{
-		$data['post'] = $this->posts_model->getPosts($slug);
-		$formattedData['post'] = $this->posts_model->formatPosts($data);
+		$this->load->helper('format');
+		
+		$data['post'] = formatType($this->posts_model->getPosts($slug));
 		
 		if (empty($data['post']))
 		{
@@ -32,7 +34,7 @@ class Posts extends CI_Controller
 		}
 		
 		$this->load->view('header');
-		$this->load->view('posts/view', $formattedData);
+		$this->load->view('posts/view', $data);
 		$this->load->view('footer');
 	}
 	
