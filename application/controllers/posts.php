@@ -56,10 +56,9 @@ class Posts extends CI_Controller
 			
 			$this->load->view('header');	
 			$this->load->view('posts/success');
+			//$this->load->view('posts/preview');
 			$this->load->view('footer');
 		}
 	}
 	
 }
-
-?>
