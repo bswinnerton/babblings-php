@@ -57,20 +57,8 @@ class Posts_model extends CI_Model
 		$adjustedHeight = ceil($ratio * 280);
 		
 		$this->createThumbnail($localImagePath.$image, $adjustedHeight);
-		
-		if ($this->config->item('storage') == 's3')
-		{
-			// Add to s3 and remove local files
-			$s3->putObject($s3->inputFile($localImagePath.$image, false), $this->config->item('bucket', 's3'), $prettyImagePath.$image, S3::ACL_PUBLIC_READ);
-			$s3->putObject($s3->inputFile($localImagePath.$thumbnail, false), $this->config->item('bucket', 's3'), $prettyThumbnailPath.$image, S3::ACL_PUBLIC_READ);
-			unlink($localImagePath.$image);
-			unlink($localImagePath.$thumbnail);
-		} else
-		{
-			// Moves thumbnail from temp to public folder
-			rename($localImagePath.$thumbnail, $prettyThumbnailPath.$image);
-		}
-
+		$s3Image = $s3->putObject($s3->inputFile($localImagePath.$image, false), $this->config->item('bucket', 's3'), $prettyImagePath.$image, S3::ACL_PUBLIC_READ);
+		$s3Thumbnail = $s3->putObject($s3->inputFile($localImagePath.$thumbnail, false), $this->config->item('bucket', 's3'), $prettyThumbnailPath.$image, S3::ACL_PUBLIC_READ);
 		
 		// Data to be pushed to db
 		$data = array (
@@ -85,8 +73,25 @@ class Posts_model extends CI_Model
 			'width_thumbnail' => '280',
 			'height_thumbnail' => $adjustedHeight
 		);
+		
+		if ($this->config->item('storage') == 's3')
+		{
+			// Add to s3 and remove local files
+			if($s3Image && $s3Thumbnail) 
+			{
+				unlink($localImagePath.$image);
+				unlink($localImagePath.$thumbnail);
+				return $this->db->insert('posts', $data);
+			} else {
+				echo "Failed to upload images";
+			}
 
-		return $this->db->insert('posts', $data);
+		} else
+		{
+			// Moves thumbnail from temp to public folder
+			rename($localImagePath.$thumbnail, $prettyThumbnailPath.$image);
+			return $this->db->insert('posts', $data);
+		}
 	}
 	
 	public function createThumbnail($source, $height)
