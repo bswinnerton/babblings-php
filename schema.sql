@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `last_login` datetime NOT NULL,
   `ip_address` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_account`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `posts` (
   `id_post` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -30,9 +30,11 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `original_path` longtext,
   `width` smallint(6) DEFAULT NULL,
   `height` smallint(6) DEFAULT NULL,
+  `width_thumbnail` smallint(6) DEFAULT NULL,
+  `height_thumbnail` smallint(6) DEFAULT NULL,
   PRIMARY KEY (`id_post`),
   KEY `author` (`id_author`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
 ALTER TABLE `posts`
