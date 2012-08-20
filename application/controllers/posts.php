@@ -63,10 +63,4 @@ class Posts extends CI_Controller
 		}
 	}
 	
-	// Convert already uploaded images
-	public function convert($post)
-	{	
-		$data['post'] = $this->posts_model->convertImage($post);
-	}
-	
 }
