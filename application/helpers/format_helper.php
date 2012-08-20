@@ -14,7 +14,7 @@ function formatType($id, $type, $content, $width, $height, $view, $environment)
 	switch ($type)
 	{
 		case "image":
-			$content = $view == "all" ? "<a href=\"posts/view/".$id."\"><img src=\"".$environment."/images/posts/".$content."\" width=\"280\" height=\"".$adjustedHeight."\" /></a>" : "<img src=\"".$environment."/images/posts/".$content."\" width=\"".$width."\" height=\"".$height."\" />";
+			$content = $view == "all" ? "<a href=\"posts/view/".$id."\"><img src=\"".$environment."/images/thumbnails/posts/".$content."\" width=\"280\" height=\"".$adjustedHeight."\" /></a>" : "<img src=\"".$environment."/images/posts/".$content."\" width=\"".$width."\" height=\"".$height."\" />";
 			break;
 		case "youtube":
 			$content = "<iframe width=\"280\" height=\"158\" src=\"http://www.youtube.com/embed/".$content."?showinfo=0\" frameborder=\"0\"></iframe>";

@@ -38,8 +38,9 @@ class Posts extends CI_Controller
 	// Create post
 	public function create()
 	{
-		$this->load->helper('form');
 		$this->load->library('form_validation');
+		$this->load->library('image_lib');
+		$this->load->helper('form');
 
 		$this->form_validation->set_rules('content', 'Content', 'required');
 
