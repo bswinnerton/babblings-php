@@ -5,6 +5,7 @@ class Posts extends CI_Controller
 	// Constructor
 	function __construct()
 	{
+		ini_set('memory_limit', '-1');
 		parent::__construct();
 		$this->load->model('posts_model');
 		$this->config->load('s3', TRUE);
@@ -60,6 +61,15 @@ class Posts extends CI_Controller
 			//$this->load->view('posts/preview');
 			$this->load->view('footer');
 		}
+	}
+	
+	// Convert already uploaded images
+	public function convert($post)
+	{	
+		$data['post'] = $this->posts_model->convertImage($post);
+		
+		$this->load->view('header');
+		$this->load->view('footer');
 	}
 	
 }

@@ -77,7 +77,7 @@ class Posts_model extends CI_Model
 		if ($this->config->item('storage') == 's3')
 		{
 			// Add to s3 and remove local files
-			if($s3Image && $s3Thumbnail) 
+			if ($s3Image && $s3Thumbnail) 
 			{
 				unlink($localImagePath.$image);
 				unlink($localImagePath.$thumbnail);
@@ -116,6 +116,31 @@ class Posts_model extends CI_Model
 		}
 		
 		return TRUE;
+	}
+	
+	public function convertImage($image)
+	{
+		// Initialize s3 support
+		$this->load->library('s3');
+		$s3 = new S3();
+		
+		$prettyThumbnailPath = 'images/thumbnails/posts/';
+		
+		if ($image != NULL) $s3->getObject($this->config->item('bucket', 's3'), 'images/posts/'.$image, 'temp/'.$image);
+		
+		// Get width and height to store in db
+		$imageData = getimagesize('temp/'.$image);
+		$width = $imageData[0];
+		$height = $imageData[1];
+		$ratio = $height / $width;
+		$adjustedHeight = ceil($ratio * 280);
+		
+		$this->createThumbnail('temp/'.$image, $adjustedHeight);
+		
+		$extension_pos = strrpos('temp/'.$image, '.'); // find position of the last dot, so where the extension starts
+		$thumb = substr('temp/'.$image, 0, $extension_pos) . '_thumb' . substr('temp/'.$image, $extension_pos);
+		
+		$s3->putObject($s3->inputFile($thumb, false), $this->config->item('bucket', 's3'), $prettyThumbnailPath.$image, S3::ACL_PUBLIC_READ);
 	}
 	
 }
