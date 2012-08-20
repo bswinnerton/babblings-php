@@ -143,7 +143,8 @@ class Posts_model extends CI_Model
 		$s3->putObject($s3->inputFile($thumb, false), $this->config->item('bucket', 's3'), $prettyThumbnailPath.$image, S3::ACL_PUBLIC_READ);
 		
 		$data = array(
-		               'height_thumbnail' => $adjustedheight
+						'width_thumbnail' => '280',
+		               'height_thumbnail' => $adjustedHeight
 		            );
 
 		$this->db->where('content', $image);
