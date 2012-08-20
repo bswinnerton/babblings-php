@@ -67,9 +67,6 @@ class Posts extends CI_Controller
 	public function convert($post)
 	{	
 		$data['post'] = $this->posts_model->convertImage($post);
-		
-		$this->load->view('header');
-		$this->load->view('footer');
 	}
 	
 }
