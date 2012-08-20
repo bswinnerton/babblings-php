@@ -147,7 +147,7 @@ class Posts_model extends CI_Model
 		            );
 
 		$this->db->where('content', $image);
-		return $this->db->update('height_thumbnail', $data);
+		return $this->db->update('posts', $data);
 	}
 	
 }
