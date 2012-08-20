@@ -141,6 +141,13 @@ class Posts_model extends CI_Model
 		$thumb = substr('temp/'.$image, 0, $extension_pos) . '_thumb' . substr('temp/'.$image, $extension_pos);
 		
 		$s3->putObject($s3->inputFile($thumb, false), $this->config->item('bucket', 's3'), $prettyThumbnailPath.$image, S3::ACL_PUBLIC_READ);
+		
+		$data = array(
+		               'height_thumbnail' => $adjustedheight
+		            );
+
+		$this->db->where('content', $image);
+		return $this->db->update('height_thumbnail', $data);
 	}
 	
 }
