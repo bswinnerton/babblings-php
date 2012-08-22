@@ -30,11 +30,12 @@ class Posts_model extends CI_Model
 		$this->load->model('files_model');
 		
 		// Get name and assign to image and thumbnail
-		$name = $this->getName();
-		$image = $name['filename'];
+		$name = $this->getName($this->input->post('content'));
+		$filename = $name['filename'];
+		$image = $name['image'];
 		$thumbnail = $name['thumbnail'];
 		
-		$size = $this->files_model->getSize($name['image']);
+		$size = $this->files_model->getSize($image);
 		$width = $size['width'];
 		$height = $size['height'];
 		$adjustedHeight = $size['adjustedHeight'];
@@ -50,7 +51,7 @@ class Posts_model extends CI_Model
 			'status' => "active",
 			'date_created' => date('Y-m-d H:i:s'),
 			'type' => "image",
-			'content' => $image,
+			'content' => $filename,
 			'original_path' => $this->input->post('content'),
 			'width' => $width,
 			'height' => $height,
@@ -61,13 +62,13 @@ class Posts_model extends CI_Model
 		return $this->db->insert('posts', $data);
 	}
 	
-	public function getName()
+	public function getName($image)
 	{
 		// Format image URI
 		$imagePath = 'images/posts/';
 		$thumbnailPath = 'images/thumbnails/posts/';
 		
-		$name = uniqid();
+		$name = md5($image);
 		$extension = pathinfo($this->input->post('content'));
 		$image = $name.'.'.$extension['extension'];
 		

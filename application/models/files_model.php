@@ -16,7 +16,7 @@ class Files_model extends CI_Model
 		
 		// Get name and assign to image and thumbnail
 		$this->load->model('posts_model');
-		$name = $this->posts_model->getName();
+		$name = $this->posts_model->getName($this->input->post('content'));
 		$image = $name['image'];
 		$thumbnail = $name['thumbnail'];
 		

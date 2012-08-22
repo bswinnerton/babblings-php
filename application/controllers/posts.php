@@ -9,6 +9,7 @@ class Posts extends CI_Controller
 		parent::__construct();
 		//$this->load->model('posts_model');
 		$this->load->model('files_model');
+		$this->load->model('posts_model');
 		$this->config->load('s3', TRUE);
 	}
 	
