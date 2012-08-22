@@ -366,6 +366,9 @@ $config['proxy_ips'] = '';
 // Storage type: available options are 's3' and 'local'. Be sure to configure s3 configuration in s3.php
 $config['storage'] = 'local';
 
+// Width of #contentBox
+$config['contentBox_width'] = '280';
+
 
 /* End Application Specific Configurations */
 

@@ -55,7 +55,7 @@ class Posts_model extends CI_Model
 			'original_path' => $this->input->post('content'),
 			'width' => $width,
 			'height' => $height,
-			'width_thumbnail' => '280',
+			'width_thumbnail' => $this->config->item('contentBox_width'),
 			'height_thumbnail' => $adjustedHeight
 		);
 		
