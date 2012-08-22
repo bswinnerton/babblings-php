@@ -26,19 +26,10 @@ class Files_model extends CI_Model
 		
 		$size = $this->getSize($image);
 		$adjustedHeight = $size['adjustedHeight'];
-		$this->createThumbnail($image, $adjustedHeight);
+		$this->createThumbnail($image, $thumbnail, $adjustedHeight);
 		
 		$s3Image = $s3->putObject($s3->inputFile($image, false), $this->config->item('bucket', 's3'), $image, S3::ACL_PUBLIC_READ);
 		$s3Thumbnail = $s3->putObject($s3->inputFile($thumbnail, false), $this->config->item('bucket', 's3'), $thumbnail, S3::ACL_PUBLIC_READ);
-		
-		if ($this->config->item('storage') == 's3')
-		{
-			unlink($image);
-			unlink($thumbnail);
-		} else {
-			// Moves thumbnail from temp to public folder
-			rename($thumbnail, $image);
-		}
 		
 		// return true if uploaded, false if failed
 		if ($s3Image && $s3Thumbnail)
@@ -60,13 +51,13 @@ class Files_model extends CI_Model
 		return array('width' => $width, 'height' => $height, 'adjustedHeight' => $adjustedHeight, 'ratio' => $ratio);
 	}
 	
-	public function createThumbnail($source, $height)
+	public function createThumbnail($source, $destination, $height)
 	{
 		$this->load->library('image_lib');
 		
 		$thumbnail['image_library'] = 'GD2';
 		$thumbnail['source_image']	= $source;
-		$thumbnail['create_thumb'] = TRUE;
+		$thumbnail['new_image'] = $destination;
 		$thumbnail['maintain_ratio'] = TRUE;
 		$thumbnail['width'] = '280';
 		$thumbnail['height'] = $height;

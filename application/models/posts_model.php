@@ -31,7 +31,7 @@ class Posts_model extends CI_Model
 		
 		// Get name and assign to image and thumbnail
 		$name = $this->getName();
-		$image = $name['image'];
+		$image = $name['filename'];
 		$thumbnail = $name['thumbnail'];
 		
 		$size = $this->files_model->getSize($name['image']);
@@ -64,17 +64,14 @@ class Posts_model extends CI_Model
 	public function getName()
 	{
 		// Format image URI
-		$prettyImagePath = 'images/posts/';
-		$prettyThumbnailPath = 'images/thumbnails/posts/';
-		$localImagePath = ($this->config->item('storage') === 's3' ? 'temp/' : $prettyImagePath);
-		$localThumbnailPath = ($this->config->item('storage') === 's3' ? 'temp/' : $prettyThumbnailPath);
+		$imagePath = 'images/posts/';
+		$thumbnailPath = 'images/thumbnails/posts/';
 		
 		$name = uniqid();
 		$extension = pathinfo($this->input->post('content'));
 		$image = $name.'.'.$extension['extension'];
-		$thumbnail = $name.'_thumb'.'.'.$extension['extension'];
 		
-		return array('image' => $localImagePath.$image, 'thumbnail' => $localThumbnailPath.$thumbnail);
+		return array('image' => $imagePath.$image, 'thumbnail' => $thumbnailPath.$image, 'filename' => $image);
 	}
 	
 }
