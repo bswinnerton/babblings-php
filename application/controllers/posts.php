@@ -5,7 +5,7 @@ class Posts extends CI_Controller
 	// Constructor
 	function __construct()
 	{
-		ini_set('memory_limit', '-1');
+		//ini_set('memory_limit', '-1');
 		parent::__construct();
 		
 		$this->config->load('s3', TRUE);
