@@ -3,12 +3,6 @@
 class Files_model extends CI_Model
 {
 	
-	public function __construct()
-	{
-		// Initialize s3 support
-		$this->load->library('s3');
-	}
-	
 	public function upload()
 	{		
 		// Get name and assign to image and thumbnail
@@ -24,18 +18,30 @@ class Files_model extends CI_Model
 		$size = $this->getSize($image);
 		$adjustedHeight = $size['adjustedHeight'];
 		$this->createThumbnail($image, $thumbnail, $adjustedHeight);
-		
-		$s3 = new S3();
-		$s3Image = $s3->putObject($s3->inputFile($image, false), $this->config->item('bucket', 's3'), $image, S3::ACL_PUBLIC_READ);
-		$s3Thumbnail = $s3->putObject($s3->inputFile($thumbnail, false), $this->config->item('bucket', 's3'), $thumbnail, S3::ACL_PUBLIC_READ);
-		
-		// return true if uploaded, false if failed
-		if ($s3Image && $s3Thumbnail)
+			
+		if ($this->config->item('storage') == 's3')
 		{
-			return TRUE;
+			$this->load->library('s3');
+			$s3 = new S3();
+			$s3Image = $s3->putObject($s3->inputFile($image, false), $this->config->item('bucket', 's3'), $image, S3::ACL_PUBLIC_READ);
+			$s3Thumbnail = $s3->putObject($s3->inputFile($thumbnail, false), $this->config->item('bucket', 's3'), $thumbnail, S3::ACL_PUBLIC_READ);
+
+			// return true if uploaded, false if failed
+			if ($s3Image && $s3Thumbnail)
+			{
+				return TRUE;
+			} else {
+				return FALSE;
+			}
 		} else {
-			return FALSE;
+			if (file_exists($image) && file_exists($thumbnail)) {
+				return TRUE;
+			} else {
+				return FALSE;
+			}
+			
 		}
+		
 	}
 	
 	public function getSize($file)
