@@ -7,7 +7,8 @@ class Posts extends CI_Controller
 	{
 		ini_set('memory_limit', '-1');
 		parent::__construct();
-		$this->load->model('posts_model');
+		//$this->load->model('posts_model');
+		$this->load->model('files_model');
 		$this->config->load('s3', TRUE);
 	}
 	
@@ -53,13 +54,19 @@ class Posts extends CI_Controller
 
 		}
 		else
-		{
-			$this->posts_model->addPost();
-			
-			$this->load->view('header');	
-			$this->load->view('posts/success');
-			//$this->load->view('posts/preview');
-			$this->load->view('footer');
+		{	
+			if ($this->files_model->upload() === TRUE)
+			{
+				$this->posts_model->addPost();
+				$this->load->view('header');	
+				$this->load->view('posts/success');
+				//$this->load->view('posts/preview');
+				$this->load->view('footer');
+			} else {
+				$this->load->view('header');
+				$this->load->view('posts/failure');
+				$this->load->view('footer');
+			}
 		}
 	}
 	

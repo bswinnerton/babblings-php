@@ -27,6 +27,17 @@ class Posts_model extends CI_Model
 	
 	public function addPost()
 	{
+		$this->load->model('files_model');
+		
+		// Get name and assign to image and thumbnail
+		$name = $this->getName();
+		$image = $name['image'];
+		$thumbnail = $name['thumbnail'];
+		
+		$size = $this->files_model->getSize($name['image']);
+		$width = $size['width'];
+		$height = $size['height'];
+		$adjustedHeight = $size['adjustedHeight'];
 		
 		//$this->load->helper('url');
 		//$slug = url_title($this->input->post('title'), 'dash', TRUE);
@@ -47,23 +58,23 @@ class Posts_model extends CI_Model
 			'height_thumbnail' => $adjustedHeight
 		);
 		
-		if ($this->config->item('storage') == 's3')
-		{
-			// Add to s3 and remove local files
-			if ($s3Image && $s3Thumbnail) 
-			{
-				return $this->db->insert('posts', $data);
-			} else {
-				echo "Failed to upload images";
-			}
-
-		} else
-		{
-			// Moves thumbnail from temp to public folder
-			return $this->db->insert('posts', $data);
-		}
+		return $this->db->insert('posts', $data);
 	}
 	
-
+	public function getName()
+	{
+		// Format image URI
+		$prettyImagePath = 'images/posts/';
+		$prettyThumbnailPath = 'images/thumbnails/posts/';
+		$localImagePath = ($this->config->item('storage') === 's3' ? 'temp/' : $prettyImagePath);
+		$localThumbnailPath = ($this->config->item('storage') === 's3' ? 'temp/' : $prettyThumbnailPath);
+		
+		$name = uniqid();
+		$extension = pathinfo($this->input->post('content'));
+		$image = $name.'.'.$extension['extension'];
+		$thumbnail = $name.'_thumb'.'.'.$extension['extension'];
+		
+		return array('image' => $localImagePath.$image, 'thumbnail' => $localThumbnailPath.$thumbnail);
+	}
 	
 }
