@@ -26,20 +26,9 @@ class Files_model extends CI_Model
 			$s3Image = $s3->putObject($s3->inputFile($image, false), $this->config->item('bucket', 's3'), $image, S3::ACL_PUBLIC_READ);
 			$s3Thumbnail = $s3->putObject($s3->inputFile($thumbnail, false), $this->config->item('bucket', 's3'), $thumbnail, S3::ACL_PUBLIC_READ);
 
-			// return true if uploaded, false if failed
-			if ($s3Image && $s3Thumbnail)
-			{
-				return TRUE;
-			} else {
-				return FALSE;
-			}
+			return $s3Image && $s3Thumbnail;
 		} else {
-			if (file_exists($image) && file_exists($thumbnail)) {
-				return TRUE;
-			} else {
-				return FALSE;
-			}
-			
+			return file_exists($image) && file_exists($thumbnail);
 		}
 		
 	}
