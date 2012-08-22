@@ -10,10 +10,7 @@ class Files_model extends CI_Model
 	}
 	
 	public function upload()
-	{
-		// Initialize s3 object
-		$s3 = new S3();
-		
+	{		
 		// Get name and assign to image and thumbnail
 		$this->load->model('posts_model');
 		$name = $this->posts_model->getName($this->input->post('content'));
@@ -28,6 +25,7 @@ class Files_model extends CI_Model
 		$adjustedHeight = $size['adjustedHeight'];
 		$this->createThumbnail($image, $thumbnail, $adjustedHeight);
 		
+		$s3 = new S3();
 		$s3Image = $s3->putObject($s3->inputFile($image, false), $this->config->item('bucket', 's3'), $image, S3::ACL_PUBLIC_READ);
 		$s3Thumbnail = $s3->putObject($s3->inputFile($thumbnail, false), $this->config->item('bucket', 's3'), $thumbnail, S3::ACL_PUBLIC_READ);
 		
@@ -73,6 +71,18 @@ class Files_model extends CI_Model
 		}
 		
 		return TRUE;
+	}
+	
+	public function cleanTemp()
+	{
+		// Get name and assign to image and thumbnail
+		$this->load->model('posts_model');
+		$name = $this->posts_model->getName($this->input->post('content'));
+		$image = $name['image'];
+		$thumbnail = $name['thumbnail'];
+		
+		unlink($image);
+		unlink($thumbnail);
 	}
 	
 }

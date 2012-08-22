@@ -59,6 +59,7 @@ class Posts extends CI_Controller
 			if ($this->files_model->upload() === TRUE)
 			{
 				$this->posts_model->addPost();
+				$this->files_model->cleanTemp();
 				$this->load->view('header');	
 				$this->load->view('posts/success');
 				//$this->load->view('posts/preview');
