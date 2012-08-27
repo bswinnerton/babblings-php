@@ -5,11 +5,13 @@ class Posts_model extends CI_Model
 	
 	public function __construct()
 	{
+		// Load database no matter what
 		$this->load->database();
 	}
 	
 	public function getPosts($slug = FALSE)
 	{
+		// Check to see if we're looking for one specific post
 		if ($slug === FALSE)
 		{
 			$this->db->select('id_post, type, title, content, width, height, width_thumbnail, height_thumbnail');
@@ -35,17 +37,13 @@ class Posts_model extends CI_Model
 		$image = $name['image'];
 		$thumbnail = $name['thumbnail'];
 		
+		// Get size and assign width, height and thumbnail height
 		$size = $this->files_model->getSize($image);
 		$width = $size['width'];
 		$height = $size['height'];
-		$adjustedHeight = $size['adjustedHeight'];
+		$thumbnailHeight = $size['adjustedHeight'];
 		
-		//$this->load->helper('url');
-		//$slug = url_title($this->input->post('title'), 'dash', TRUE);
-
-		// todo: add handler to only run this if image
-		
-		// Data to be pushed to db
+		// Data to be pushed to database
 		$data = array (
 			'id_author' => "1",
 			'status' => "active",
@@ -56,7 +54,7 @@ class Posts_model extends CI_Model
 			'width' => $width,
 			'height' => $height,
 			'width_thumbnail' => $this->config->item('contentBox_width'),
-			'height_thumbnail' => $adjustedHeight
+			'height_thumbnail' => $thumbnailHeight
 		);
 		
 		return $this->db->insert('posts', $data);
