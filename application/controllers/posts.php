@@ -9,12 +9,12 @@ class Posts extends CI_Controller
 		parent::__construct();
 		
 		$this->config->load('s3', TRUE);
+		$this->load->model('posts_model');
 	}
 	
 	// View all posts
 	public function index()
-	{	
-		$this->load->model('posts_model');
+	{
 		$data['post'] = $this->posts_model->getPosts();
 		
 		$this->load->view('header');
@@ -24,8 +24,7 @@ class Posts extends CI_Controller
 	
 	// View single post
 	public function view($slug)
-	{	
-		$this->load->model('posts_model');
+	{
 		$data['post'] = $this->posts_model->getPosts($slug);
 		
 		if (empty($data['post']))
@@ -41,10 +40,8 @@ class Posts extends CI_Controller
 	// Create post
 	public function create()
 	{
-		$this->load->model('posts_model');
 		$this->load->model('files_model');
 		$this->load->library('form_validation');
-		$this->load->library('image_lib');
 		$this->load->helper('form');
 
 		$this->form_validation->set_rules('content', 'Content', 'required');
