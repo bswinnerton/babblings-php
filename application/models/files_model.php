@@ -74,7 +74,7 @@ class Files_model extends CI_Model
 		// Resize passed in original to create thumbnail
 		$this->image_lib->resize();
 		
-		// Check for errors - needs to be adjusted for error handling Yury suggested
+		// Check for errors
 		if (!$this->image_lib->resize())
 		{
 		    echo $this->image_lib->display_errors();
