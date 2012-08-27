@@ -57,22 +57,50 @@ class Posts extends CI_Controller
 
 		}
 		else
-		{	
-			if ($this->files_model->upload() === TRUE)
+		{
+			$type = $this->posts_model->getType();
+			
+			switch ($type)
 			{
-				$this->posts_model->addPost();
-				if ($this->config->item('storage') == 's3')
-				{
-					$this->files_model->cleanTemp();
-				}
-				$this->load->view('header');	
-				$this->load->view('posts/success');
-				//$this->load->view('posts/preview');
-				$this->load->view('footer');
-			} else {
-				$this->load->view('header');
-				$this->load->view('posts/failure');
-				$this->load->view('footer');
+				case "image":
+					if ($this->files_model->upload() === TRUE)
+					{
+						$this->posts_model->addImagePost();
+						if ($this->config->item('storage') == 's3')
+						{
+							$this->files_model->cleanTemp();
+						}
+						$this->load->view('header');	
+						$this->load->view('posts/success');
+						//$this->load->view('posts/preview');
+						$this->load->view('footer');
+					} else {
+						$this->load->view('header');
+						$this->load->view('posts/failure');
+						$this->load->view('footer');
+					}
+					break;
+				case "youtube":
+					$this->posts_model->addYoutubePost();
+					$this->load->view('header');	
+					$this->load->view('posts/success');
+					//$this->load->view('posts/preview');
+					$this->load->view('footer');
+					break;
+				case "vimeo":
+					$this->posts_model->addVimeoPost();
+					$this->load->view('header');	
+					$this->load->view('posts/success');
+					//$this->load->view('posts/preview');
+					$this->load->view('footer');
+					break;
+				case "text":
+					$this->posts_model->addTextPost();
+					$this->load->view('header');	
+					$this->load->view('posts/success');
+					//$this->load->view('posts/preview');
+					$this->load->view('footer');
+					break;
 			}
 		}
 	}

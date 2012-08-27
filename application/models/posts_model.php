@@ -27,7 +27,42 @@ class Posts_model extends CI_Model
 		return $query->result_array();
 	}
 	
-	public function addPost()
+	public function getName($image)
+	{
+		// Format image URI
+		$imagePath = 'images/posts/';
+		$thumbnailPath = 'images/thumbnails/posts/';
+		
+		$name = md5($image);
+		$extension = pathinfo($this->input->post('content'));
+		$image = $name.'.'.$extension['extension'];
+		
+		return array('image' => $imagePath.$image, 'thumbnail' => $thumbnailPath.$image, 'filename' => $image);
+	}
+	
+	public function getType()
+	{
+		$content = $this->input->post('content');
+		
+		if (preg_match('/(\.jpg|\.png|\.bmp)$/', $content))
+		{
+			return "image";
+		}
+		elseif (strpos($content, "youtube.com") !== false)
+		{
+			return "youtube";
+		}
+		elseif (strpos($content, "vimeo.com") !== false)
+		{
+			return "vimeo";
+		}
+		else 
+		{
+			return "text";
+		}
+	}
+	
+	public function addImagePost()
 	{
 		$this->load->model('files_model');
 		
@@ -60,17 +95,56 @@ class Posts_model extends CI_Model
 		return $this->db->insert('posts', $data);
 	}
 	
-	public function getName($image)
+	public function addYoutubePost()
 	{
-		// Format image URI
-		$imagePath = 'images/posts/';
-		$thumbnailPath = 'images/thumbnails/posts/';
+		preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+(?=\?)|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $this->input->post('content'), $youtubeID);
 		
-		$name = md5($image);
-		$extension = pathinfo($this->input->post('content'));
-		$image = $name.'.'.$extension['extension'];
+		// Data to be pushed to database
+		$data = array (
+			'id_author' => "1",
+			'status' => "active",
+			'date_created' => date('Y-m-d H:i:s'),
+			'type' => "youtube",
+			'content' => $youtubeID[0],
+			'original_path' => $this->input->post('content'),
+			'width' => '280',
+			'height' => '158'
+		);
 		
-		return array('image' => $imagePath.$image, 'thumbnail' => $thumbnailPath.$image, 'filename' => $image);
+		return $this->db->insert('posts', $data);
+	}
+	
+	public function addVimeoPost()
+	{
+		preg_match("/(?:www.)?(\w*).com\/(\d*)/", $this->input->post('content'), $vimeoID);
+		
+		// Data to be pushed to database
+		$data = array (
+			'id_author' => "1",
+			'status' => "active",
+			'date_created' => date('Y-m-d H:i:s'),
+			'type' => "vimeo",
+			'content' => $vimeoID[2],
+			'original_path' => $this->input->post('content'),
+			'width' => '280',
+			'height' => '158'
+		);
+		
+		return $this->db->insert('posts', $data);
+	}
+	
+	public function addTextPost()
+	{
+		// Data to be pushed to database
+		$data = array (
+			'id_author' => "1",
+			'status' => "active",
+			'date_created' => date('Y-m-d H:i:s'),
+			'type' => "text",
+			'content' => $this->input->post('content')
+		);
+		
+		return $this->db->insert('posts', $data);
 	}
 	
 }

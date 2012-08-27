@@ -2,14 +2,16 @@
 
 function formatType($id, $type, $content, $width, $height, $view, $environment)
 {	
-	if ($width > 960)
-	{
+	if ($type === "image") {
+		if ($width > 960)
+		{
+			$ratio = $height / $width;
+			$width = 960;
+			$height = $ratio * 960;
+		}
 		$ratio = $height / $width;
-		$width = 960;
-		$height = $ratio * 960;
+		$adjustedHeight = ceil($ratio * 280);
 	}
-	$ratio = $height / $width;
-	$adjustedHeight = ceil($ratio * 280);
 	
 	switch ($type)
 	{
