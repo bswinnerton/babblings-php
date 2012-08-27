@@ -21,7 +21,7 @@ class Files_model extends CI_Model
 		$thumbnailHeight = $size['adjustedHeight'];
 		
 		// Create thumbnail from local file
-		$this->createThumbnail($image, $thumbnail, $thumbmailHeight);
+		$this->createThumbnail($image, $thumbnail, $thumbnailHeight);
 		
 		// Check if s3 storage is enabled from config
 		if ($this->config->item('storage') == 's3')
