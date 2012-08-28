@@ -13,7 +13,7 @@ Babblin.gs is a tumblr-like blogging platform that can incorporate various types
 
 1. Image (ending in .jpg, .png, .gif, etc):
 
-      	http://farm7.staticflickr.com/6119/6278651452_15a629cbe7.jpg
+		http://farm7.staticflickr.com/6119/6278651452_15a629cbe7.jpg
 
 2. Youtube:
 
@@ -33,7 +33,7 @@ Babblin.gs is a tumblr-like blogging platform that can incorporate various types
 
 ### Installation ###
 
-babblings runs on a preconfigured [CodeIgniter] stack. The only requirements are a working PHP & MySQL instance.
+babblings runs on a preconfigured [CodeIgniter] stack. The only requirements are a working PHP & database.
 
 Various parameters are required to get a working environment. Be sure to define the following parameters:
 
@@ -59,6 +59,18 @@ __application/config/s3.php:__
 3. `$config['useSSL'] = FALSE;` This options controls whether or not traffic to s3 is done over SSL.
 4. `$config['bucket'] = 's3.babblin.gs';` The name of your s3 bucket.
 
-__Database__
+__Database:__
 
 The database can be originally created with the schema.sql file. It contains the framework for which babblings runs on.
+
+__Document Root:__
+
+The document root should be set to the path in which the source code is located, following by public/. In apache, this would look like this:
+
+        DocumentRoot /var/www/babblin.gs/public/
+
+### Questions / Comments ###
+
+Please feel free to direct any questions or comments to the [issue tracker], located on GitHub.
+
+  [issue tracker]: https://github.com/bswinnerton/babblings/issues
