@@ -23,12 +23,12 @@ function formatType($id, $type, $content, $width, $height, $view, $environment)
 			break;
 		case "vimeo":
 			$content = "<iframe width=\"280\" height=\"158\" src=\"http://player.vimeo.com/video/".$content."?portrait=0\" frameborder=\"0\" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>";
+			break;			
+		case "spotify":
+			$content = "<iframe src=\"https://embed.spotify.com/?uri=spotify:track:".$content."\" width=\"280\" height=\"80\" frameborder=\"0\" allowtransparency=\"true\"></iframe>";
 			break;
 		case "text":
 			$content = "<div id=\"text\">".$content."</div>";
-			break;
-		case "spotify":
-			$content = "<iframe src=\"https://embed.spotify.com/?uri=spotify:track:".$content."\" width=\"280\" height=\"80\" frameborder=\"0\" allowtransparency=\"true\"></iframe>";
 			break;
 	}
 	return $content;
