@@ -50,7 +50,7 @@ __application/config/database.php:__
 2. `$db['default']['username'] = 'babblings';` The username that has access to your database server and babblings database.
 3. `$db['default']['password'] = '';` The password to your babblings-accessible user.
 4. `$db['default']['database'] = 'babblings';` The name of the database that the schema.sql script will be stored on.
-5. `$db['default']['dbdriver'] = 'mysql';` The type of database you plan to use.
+5. `$db['default']['dbdriver'] = 'mysqli';` The type of database you plan to use.
   
 __application/config/s3.php:__
 
