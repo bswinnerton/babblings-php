@@ -33,7 +33,7 @@ Babblin.gs is a tumblr-like blogging platform that can incorporate various types
 
 ### Installation ###
 
-babblings runs on a preconfigured [CodeIgniter] stack. The only requirements are a working PHP & database.
+babblings runs on a preconfigured [CodeIgniter] stack. The only requirements are a working PHP & database instance.
 
 Various parameters are required to get a working environment. Be sure to define the following parameters:
 
