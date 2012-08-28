@@ -48,13 +48,17 @@ class Posts_model extends CI_Model
 		{
 			return "image";
 		}
-		elseif (strpos($content, "youtube.com") !== false)
+		elseif (strpos($content, "youtube.com") !== FALSE)
 		{
 			return "youtube";
 		}
-		elseif (strpos($content, "vimeo.com") !== false)
+		elseif (strpos($content, "vimeo.com") !== FALSE)
 		{
 			return "vimeo";
+		}
+		elseif (strpos($content, "spotify:track") !== FALSE)
+		{
+			return "spotify";
 		}
 		else 
 		{
@@ -128,6 +132,23 @@ class Posts_model extends CI_Model
 			'original_path' => $this->input->post('content'),
 			'width' => '280',
 			'height' => '158'
+		);
+		
+		return $this->db->insert('posts', $data);
+	}
+	
+	public function addSpotifyPost()
+	{
+		preg_match("/spotify:track:([a-zA-Z0-9]{22})/", $this->input->post('content'), $spotifyID);
+		
+		// Data to be pushed to database
+		$data = array (
+			'id_author' => "1",
+			'status' => "active",
+			'date_created' => date('Y-m-d H:i:s'),
+			'type' => "spotify",
+			'content' => $spotifyID[1],
+			'original_path' => $this->input->post('content')
 		);
 		
 		return $this->db->insert('posts', $data);
