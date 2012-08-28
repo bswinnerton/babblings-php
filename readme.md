@@ -13,7 +13,7 @@ Babblin.gs is a tumblr-like blogging platform that can incorporate various types
 
 1. Image (ending in .jpg, .png, .gif, etc):
 
-      `http://farm7.staticflickr.com/6119/6278651452_15a629cbe7.jpg`
+      http://farm7.staticflickr.com/6119/6278651452_15a629cbe7.jpg
 
 2. Youtube:
 
