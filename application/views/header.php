@@ -3,6 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="Author" content="Brooks Swinnerton, brooks@rockthepost.com" />
+	<meta name="Description" content="babbles of the internet, all in one place." />
 	<title>babblings of thee</title>
 	<link rel="stylesheet" href="/css/reset.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" />
