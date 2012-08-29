@@ -25,8 +25,8 @@ Be sure to place this in /application/config/development or /application/config/
 | -------------------------------------------------------------------
 */
 
-$config['accessKey'] = "";
-$config['secretKey'] = "";
+$config['accessKey'] = '';
+$config['secretKey'] = '';
 $config['useSSL'] = FALSE;
 
-$config['bucket'] = "";
+$config['bucket'] = '';
