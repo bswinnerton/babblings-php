@@ -68,7 +68,7 @@ class Posts extends CI_Controller
 							$this->files_model->cleanTemp();
 						}
 						$this->load->view('header');	
-						$this->load->view('posts/index');
+						$this->load->view('posts/success');
 						//$this->load->view('posts/preview');
 						$this->load->view('footer');
 					} else {
@@ -80,28 +80,28 @@ class Posts extends CI_Controller
 				case "youtube":
 					$this->posts_model->addYoutubePost();
 					$this->load->view('header');	
-					$this->load->view('posts/index');
+					$this->load->view('posts/success');
 					//$this->load->view('posts/preview');
 					$this->load->view('footer');
 					break;
 				case "vimeo":
 					$this->posts_model->addVimeoPost();
 					$this->load->view('header');	
-					$this->load->view('posts/index');
+					$this->load->view('posts/success');
 					//$this->load->view('posts/preview');
 					$this->load->view('footer');
 					break;
 				case "spotify":
 					$this->posts_model->addSpotifyPost();
 					$this->load->view('header');	
-					$this->load->view('posts/index');
+					$this->load->view('posts/success');
 					//$this->load->view('posts/preview');
 					$this->load->view('footer');
 					break;
 				case "text":
 					$this->posts_model->addTextPost();
 					$this->load->view('header');	
-					$this->load->view('posts/index');
+					$this->load->view('posts/success');
 					//$this->load->view('posts/preview');
 					$this->load->view('footer');
 					break;
