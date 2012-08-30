@@ -44,7 +44,7 @@ class Posts_model extends CI_Model
 	{
 		$content = $this->input->post('content');
 		
-		if (preg_match('/(\.jpg|\.png|\.bmp)$/', $content))
+		if (preg_match('/(\.jpg|\.png|\.bmp|\.gif)$/', $content))
 		{
 			return "image";
 		}
