@@ -35,11 +35,15 @@ Babblin.gs is a tumblr-like blogging platform that can incorporate various types
 
 babblings runs on a preconfigured [CodeIgniter] stack. The requirements are as follows:
 
+<<<<<<< HEAD
 * PHP
 * [My]SQL
 * ImageMagick
 
 Various parameters are required to get a working environment. Be sure to define the following:
+=======
+Various parameters are required to get a working environment. You will need to rename the initial configuration files from .inc.php to .php (e.g. s3.inc.php -> s3.php). In those files, be sure to define the following parameters:
+>>>>>>> master
 
 __application/config/config.php:__
 
