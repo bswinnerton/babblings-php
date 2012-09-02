@@ -44,14 +44,14 @@
 
 					if($(window).scrollTop() + $(window).height() > $(document).height() - 300) {
 
-						$.ajax({
+						setTimeout($.ajax({
 							type: "GET",
 							url: "posts/page/" + currentPage,
 							data: "",
 							success: function(results){
 								$(".container").append(results).masonry('reload');
 							}
-						})
+						}), 1500);
 						currentPage++;
 						
 					}
