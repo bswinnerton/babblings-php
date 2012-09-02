@@ -35,30 +35,37 @@
 			});
 			
 			// Endless scroll
-			setTimeout(function(){
+			(function(){
 
-				//inner functions will be aware of this
-				var currentPage = 1;
+			    //inner functions will be aware of this
+			    var currentPage = 1,
+			        currentXHR;
 
-					$(window).scroll(function() {
+			        $(window).scroll(function() {
 
-					if($(window).scrollTop() + $(window).height() > $(document).height() - 300) {
+			        if($(window).scrollTop() + $(window).height() > $(document).height() - 300) {
 
-						setTimeout($.ajax({
-							type: "GET",
-							url: "posts/page/" + currentPage,
-							data: "",
-							success: function(results){
-								$(".container").append(results).masonry('reload');
-							}
-						}), 1500);
-						currentPage++;
-						
-					}
+			            if (currentXHR) {
+			                return;
+			            }
 
-				});
+			            currentXHR = $.ajax({
+			                type: "GET",
+			                url: "posts/page/" + currentPage++,
+			                data: "",
+			                success: function(results){
+			                    $(".container").append(results).masonry('reload');
+			                },
+			                complete: function() {
+			                    currentXHR = null;
+			                }
+			            })
 
-			}, 300);
+			        }
+
+			    });
+
+			})();
 			
 			// Submit on enter for posts/create/
 			$(function(){
