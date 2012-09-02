@@ -35,7 +35,7 @@
 			});
 			
 			// Endless scroll
-			(function(){
+			setTimeout(function(){
 
 				//inner functions will be aware of this
 				var currentPage = 1;
@@ -53,12 +53,12 @@
 							}
 						})
 						currentPage++;
-
+						
 					}
 
 				});
 
-			})();
+			}, 300);
 			
 			// Submit on enter for posts/create/
 			$(function(){
