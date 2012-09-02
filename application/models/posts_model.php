@@ -11,6 +11,8 @@ class Posts_model extends CI_Model
 	
 	public function getPosts($page = 0, $slug = FALSE)
 	{
+		$itemsPerPage = $this->config->item('itemsPerPage');
+		
 		// Query only if on index
 		if ($page === 1 && $slug === FALSE)
 		{
@@ -19,7 +21,7 @@ class Posts_model extends CI_Model
 			$this->db->where('is_deleted !=', 1);
 			$this->db->where('status', 'active');
 			$this->db->order_by("date_created", "desc");
-			$this->db->limit("10", "1");
+			$this->db->limit($itemsPerPage, "1");
 			
 			$query = $this->db->get('posts');
 			return $query->result_array();
@@ -30,7 +32,7 @@ class Posts_model extends CI_Model
 			$this->db->where('is_deleted !=', 1);
 			$this->db->where('status', 'active');
 			$this->db->order_by("date_created", "desc");
-			$this->db->limit("10", $page * 10);
+			$this->db->limit($itemsPerPage, $page * $itemsPerPage);
 			
 			$query = $this->db->get('posts');
 			return $query->result_array();

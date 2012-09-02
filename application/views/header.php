@@ -42,7 +42,7 @@
 
 					$(window).scroll(function() {
 
-					if($(window).scrollTop() + $(window).height() > $(document).height()) {
+					if($(window).scrollTop() + $(window).height() > $(document).height() - 300) {
 
 						$.ajax({
 							type: "GET",
@@ -50,10 +50,9 @@
 							data: "",
 							success: function(results){
 								$(".container").append(results).masonry('reload');
-								currentPage++;
-								alert(currentPage);
 							}
 						})
+						currentPage++;
 
 					}
 

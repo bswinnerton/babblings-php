@@ -369,6 +369,9 @@ $config['storage'] = 'local';
 // Width of #contentBox
 $config['contentBox_width'] = '280';
 
+// Number of items to display per "page"
+$config['itemsPerPage'] = '15';
+
 
 /* End Application Specific Configurations */
 
