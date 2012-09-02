@@ -60,7 +60,7 @@ class Files_model extends CI_Model
 		$this->load->library('image_lib');
 		
 		// Define CI image lib variables
-		$thumbnail['image_library'] = 'ImageMagick';
+		$thumbnail['image_library'] = 'GD2';
 		$thumbnail['source_image']	= $source;
 		$thumbnail['new_image'] = $destination;
 		$thumbnail['maintain_ratio'] = TRUE;

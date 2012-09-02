@@ -9,22 +9,38 @@ class Posts_model extends CI_Model
 		$this->load->database();
 	}
 	
-	public function getPosts($slug = FALSE)
+	public function getPosts($page = 0, $slug = FALSE)
 	{
-		// Check to see if we're looking for one specific post
-		if ($slug === FALSE)
+		// Query only if on index
+		if ($page === 1 && $slug === FALSE)
 		{
+			
 			$this->db->select('id_post, type, title, content, width, height, width_thumbnail, height_thumbnail');
 			$this->db->where('is_deleted !=', 1);
 			$this->db->where('status', 'active');
 			$this->db->order_by("date_created", "desc");
+			$this->db->limit("10", "1");
 			
 			$query = $this->db->get('posts');
 			return $query->result_array();
+			
+		} else if ($page !== 1 && $slug === FALSE) {
+			
+			$this->db->select('id_post, type, title, content, width, height, width_thumbnail, height_thumbnail');
+			$this->db->where('is_deleted !=', 1);
+			$this->db->where('status', 'active');
+			$this->db->order_by("date_created", "desc");
+			$this->db->limit("10", $page * 10);
+			
+			$query = $this->db->get('posts');
+			return $query->result_array();
+			
+		} else {
+			
+			$query = $this->db->get_where('posts', array('id_post' => $slug));
+			return $query->result_array();
+			
 		}
-		
-		$query = $this->db->get_where('posts', array('id_post' => $slug));
-		return $query->result_array();
 	}
 	
 	public function getName($image)

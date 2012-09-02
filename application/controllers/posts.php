@@ -25,7 +25,7 @@ class Posts extends CI_Controller
 	// View single post
 	public function view($slug)
 	{
-		$data['post'] = $this->posts_model->getPosts($slug);
+		$data['post'] = $this->posts_model->getPosts($page = FALSE, $slug);
 		
 		if (empty($data['post']))
 		{
@@ -35,6 +35,14 @@ class Posts extends CI_Controller
 		$this->load->view('header');
 		$this->load->view('posts/view', $data);
 		$this->load->view('footer');
+	}
+	
+	// View page
+	public function page($page)
+	{
+		$data['post'] = $this->posts_model->getPosts($page, $slug = FALSE);
+		
+		$this->load->view('posts/page', $data);
 	}
 	
 	// Create post
@@ -69,7 +77,6 @@ class Posts extends CI_Controller
 						}
 						$this->load->view('header');	
 						$this->load->view('posts/success');
-						//$this->load->view('posts/preview');
 						$this->load->view('footer');
 					} else {
 						$this->load->view('header');
@@ -81,28 +88,24 @@ class Posts extends CI_Controller
 					$this->posts_model->addYoutubePost();
 					$this->load->view('header');	
 					$this->load->view('posts/success');
-					//$this->load->view('posts/preview');
 					$this->load->view('footer');
 					break;
 				case "vimeo":
 					$this->posts_model->addVimeoPost();
 					$this->load->view('header');	
 					$this->load->view('posts/success');
-					//$this->load->view('posts/preview');
 					$this->load->view('footer');
 					break;
 				case "spotify":
 					$this->posts_model->addSpotifyPost();
 					$this->load->view('header');	
 					$this->load->view('posts/success');
-					//$this->load->view('posts/preview');
 					$this->load->view('footer');
 					break;
 				case "text":
 					$this->posts_model->addTextPost();
 					$this->load->view('header');	
 					$this->load->view('posts/success');
-					//$this->load->view('posts/preview');
 					$this->load->view('footer');
 					break;
 			}

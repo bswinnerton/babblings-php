@@ -13,7 +13,7 @@ Babblin.gs is a tumblr-like blogging platform that can incorporate various types
 
 1. Image (ending in .jpg, .png, .gif, etc):
 
-  	http://farm7.staticflickr.com/6119/6278651452_15a629cbe7.jpg
+		http://farm7.staticflickr.com/6119/6278651452_15a629cbe7.jpg
 
 2. Youtube:
 
@@ -33,17 +33,9 @@ Babblin.gs is a tumblr-like blogging platform that can incorporate various types
 
 ### Installation ###
 
-babblings runs on a preconfigured [CodeIgniter] stack. The requirements are as follows:
+babblings runs on a preconfigured [CodeIgniter] stack. The only requirements are a working PHP & database instance.
 
-<<<<<<< HEAD
-* PHP
-* [My]SQL
-* ImageMagick
-
-Various parameters are required to get a working environment. Be sure to define the following:
-=======
 Various parameters are required to get a working environment. You will need to rename the initial configuration files from .inc.php to .php (e.g. s3.inc.php -> s3.php). In those files, be sure to define the following parameters:
->>>>>>> master
 
 __application/config/config.php:__
 

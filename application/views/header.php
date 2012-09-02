@@ -34,6 +34,33 @@
 				columnWidth : 314
 			});
 			
+			// Endless scroll
+			(function(){
+
+				//inner functions will be aware of this
+				var currentPage = 1;
+
+					$(window).scroll(function() {
+
+					if($(window).scrollTop() + $(window).height() > $(document).height()) {
+
+						$.ajax({
+							type: "GET",
+							url: "posts/page/" + currentPage,
+							data: "",
+							success: function(results){
+								$(".container").append(results).masonry('reload');
+								currentPage++;
+								alert(currentPage);
+							}
+						})
+
+					}
+
+				});
+
+			})();
+			
 			// Submit on enter for posts/create/
 			$(function(){
 			    $('input').keydown(function(e){
