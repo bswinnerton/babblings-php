@@ -11,8 +11,8 @@ $this->load->helper('url');
 	<meta name="Author" content="Brooks Swinnerton, brooks@rockthepost.com" />
 	<meta name="Description" content="babbles of the internet, all in one place." />
 	<title>babblings of thee</title>
-	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+	<link href="http://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css" />
+	<link href="http://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="/css/reset.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" />
 	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
@@ -36,9 +36,9 @@ $this->load->helper('url');
 			});*/
 			
 			// Masonry plugin
-			var $container = $('.container');
+			var $container = $('#container');
 				$container.masonry({
-				itemSelector : '#contentBox',
+				itemSelector : '.contentBox',
 				columnWidth : 314
 			});
 			
@@ -62,7 +62,7 @@ $this->load->helper('url');
 			                url: "posts/page/" + currentPage++,
 			                data: "",
 			                success: function(results){
-			                    $(".container").append(results).masonry('reload');
+			                    $("#container").append(results).masonry('reload');
 			                },
 			                complete: function() {
 			                    currentXHR = null;
@@ -101,8 +101,8 @@ $this->load->helper('url');
 	</script>
 </head>
 <body>
-	<div class="header">
-		<div class="header_inner">
+	<div id="header">
+		<div id="header_inner">
 			<div id="logo">
 				<h1><a href="<?php echo base_url(); ?>">babblings</a></h1>
 			</div>

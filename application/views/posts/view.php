@@ -5,10 +5,10 @@ $environment = $this->config->item('storage') === 's3' ? 'http://'.$this->config
 		
 ?>
 
-<div class="containerSingleOuter">
-	<div class="containerSingleInner">
+<div id="containerSingleOuter">
+	<div id="containerSingleInner">
 		<?php foreach ($post as $postData): ?>
-	    <div id="contentBox"><?php echo formatType($postData['id_post'], $postData['type'], $postData['content'], $postData['width'], $postData['height'], 'single', $environment); ?></div>
+	    <div class="contentBox"><?php echo formatType($postData['id_post'], $postData['type'], $postData['content'], $postData['width'], $postData['height'], 'single', $environment); ?></div>
 		<?php endforeach; ?>
 	</div>
 	<div class="clear"></div>
