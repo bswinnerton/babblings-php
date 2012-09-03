@@ -19,21 +19,7 @@ $this->load->helper('url');
 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
 	<script type="text/javascript" src="/js/jquery.masonry.min.js"></script>
 	<script type="text/javascript">
-		$(document).ready(function(){	
-			//$('.container').fadeIn();
-			
-			/*$(window).scroll(function() {
-				var bgHeight = 1200;
-				var documentHeight = $(document).height();
-				var windowHeight = $(window).height();
-				var offset = $(window).scrollTop();
-    				
-				var maxScroll = documentHeight - windowHeight;
-				var percentOffset = offset / maxScroll;
-				var percentToPixels = -(bgHeight-windowHeight)*percentOffset;
-    				
-				$('body').css({backgroundPosition: '50% '+percentToPixels+'px'});
-			});*/
+		$(document).ready(function(){
 			
 			// Masonry plugin
 			var $container = $('#container');

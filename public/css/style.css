@@ -75,9 +75,12 @@ body {
 	margin: 10px;
 	float: left;
 	box-shadow: 0 5px 14px rgba(0, 0, 0, 0.2);
-	padding: 5px 5px 40px 5px;
 	background-color: #FFF;
 	border: 1px solid #A0A0A0;
+}
+
+.contentBox#noText {
+	padding: 5px 5px 40px 5px;
 }
 
 .contentBox img {
@@ -105,4 +108,38 @@ input {
 	height: 38px;
 	font-size: 28px;
 	text-align: center;
+}
+
+#text {
+    font: normal 12px/1.5 "Lucida Grande", arial, sans-serif;
+    width: 244px;
+    margin: 0 auto 10px;
+    padding: 6px 5px 4px 42px;
+    position: relative;
+    color: #444;
+    line-height: 20px;
+ 
+    background: #fff;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#d9eaf3), color-stop(4%, #fff)) 0 4px;
+    background: -webkit-linear-gradient(top, #d9eaf3 0%, #fff 8%) 0 4px;
+    background: -moz-linear-gradient(top, #d9eaf3 0%, #fff 8%) 0 4px;
+    background: -ms-linear-gradient(top, #d9eaf3 0%, #fff 8%) 0 4px;
+    background: -o-linear-gradient(top, #d9eaf3 0%, #fff 8%) 0 4px;
+    background: linear-gradient(top, #d9eaf3 0%, #fff 8%) 0 4px;
+ 
+    -webkit-background-size: 100% 20px;
+    -moz-background-size: 100% 20px;
+    -ms-background-size: 100% 20px;
+    -o-background-size: 100% 20px;
+    background-size: 100% 20px;
+}
+#text::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    top: 0;
+    left: 30px;
+    bottom: 0;
+    border: 1px solid;
+    border-color: transparent #efe4e4;
 }
