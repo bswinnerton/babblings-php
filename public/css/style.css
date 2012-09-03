@@ -8,7 +8,7 @@ body {
 	background-color:#fff;
 	width:100%;
 	border-bottom:1px solid #000;
-	margin-bottom:100px;
+	margin-bottom:20px;
 	border-bottom: 1px solid #CACACA;
 	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4),
 				0 0px 10px rgba(0, 0, 0, 0.1); 
@@ -20,13 +20,20 @@ body {
 	width:942px;
 	margin-left:auto;
 	margin-right:auto;
-	margin-bottom:50px;
 }
 
 .header_inner h1 {
 	font-family: 'Lobster', cursive;
 	font-size:32px;
 	color:#3BAFCC;
+	float:left;
+}
+
+.header_inner h2 {
+	float:right;
+	font-family: 'Lato', sans-serif;
+	font-size: 18px;
+	padding-top:10px;
 }
 
 .header_inner a {

@@ -6,6 +6,7 @@
 	<meta name="Description" content="babbles of the internet, all in one place." />
 	<title>babblings of thee</title>
 	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="/css/reset.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" />
 	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
@@ -95,5 +96,8 @@
 </head>
 <body>
 	<div class="header">
-		<div class="header_inner"><h1><a href="http://localhost">babblings</a></h1>
+		<div class="header_inner">
+			<h1><a href="http://localhost">babblings</a></h1>
+			<h2>About</h2>
+		</div>
 	</div>
