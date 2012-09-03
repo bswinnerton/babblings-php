@@ -1,3 +1,9 @@
+<?php
+
+$this->load->helper('url');
+
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -97,7 +103,15 @@
 <body>
 	<div class="header">
 		<div class="header_inner">
-			<h1><a href="http://localhost">babblings</a></h1>
-			<h2>About</h2>
+			<div id="logo">
+				<h1><a href="<?php echo base_url(); ?>">babblings</a></h1>
+			</div>
+			<div id="links">
+				<ul>
+					<li>Login</li>
+					<li>Help</li>
+					<li>Blog</li>
+				</ul>
+			</div>
 		</div>
 	</div>

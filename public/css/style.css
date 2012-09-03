@@ -16,24 +16,17 @@ body {
 }
 
 .header_inner {
-	padding-top:5px;
 	width:942px;
 	margin-left:auto;
 	margin-right:auto;
 }
 
 .header_inner h1 {
+	padding-top:8px;
 	font-family: 'Lobster', cursive;
 	font-size:32px;
 	color:#3BAFCC;
 	float:left;
-}
-
-.header_inner h2 {
-	float:right;
-	font-family: 'Lato', sans-serif;
-	font-size: 18px;
-	padding-top:10px;
 }
 
 .header_inner a {
@@ -44,6 +37,16 @@ body {
 .header_inner a:hover {
 	text-decoration: none;
 	color:#2b83a0;
+}
+
+.header_inner #links li {
+	display:inline;
+	list-style:none;
+	float:right;
+	font-family: 'Lato', sans-serif;
+	font-size:18px;
+	padding-top:14px;
+	margin-right:20px;
 }
 
 .container {
