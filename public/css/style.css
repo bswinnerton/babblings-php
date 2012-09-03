@@ -1,15 +1,42 @@
 
 body {
-	background: url(../images/background.jpg) top center no-repeat fixed #fff;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+	background: url(../images/background.png);
 }
 
-#logo { 
-	margin-top: 20px; 
-	margin-bottom: 40px;
+.header {
+	height:50px;
+	background-color:#fff;
+	width:100%;
+	border-bottom:1px solid #000;
+	margin-bottom:100px;
+	border-bottom: 1px solid #CACACA;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4),
+				0 0px 10px rgba(0, 0, 0, 0.1); 
+	background-image: -webkit-linear-gradient(top, #FAFAFA, #EAEAEA);
+}
+
+.header_inner {
+	padding-top:5px;
+	width:942px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:50px;
+}
+
+.header_inner h1 {
+	font-family: 'Lobster', cursive;
+	font-size:32px;
+	color:#3BAFCC;
+}
+
+.header_inner a {
+	text-decoration: none;
+	color:#3BAFCC;
+}
+
+.header_inner a:hover {
+	text-decoration: none;
+	color:#2b83a0;
 }
 
 .container {
