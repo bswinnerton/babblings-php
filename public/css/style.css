@@ -154,7 +154,7 @@ input {
     border-color: transparent #efe4e4;
 }
 
-#underConstruction {
+#errorView {
 	font-family: 'Lobster', cursive;
 	text-align: center;
 	font-size: 54px;
