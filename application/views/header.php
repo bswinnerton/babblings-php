@@ -12,7 +12,7 @@ $this->load->helper('url');
 	<meta name="Description" content="babblings of the internet, all in one place." />
 	<meta property="og:title" content="babblings of the internet" />
 	<meta property="og:type" content="article" />
-	<meta property="og:url" content="<?php echo site_url(); ?>" />
+	<meta property="og:url" content="<?php echo site_url().$this->uri->uri_string(); ?>" />
 	<meta property="og:image" content="" />
 	<meta property="og:site_name" content="babblings." />
 	<meta property="og:description" content="babblings of the internet" />
