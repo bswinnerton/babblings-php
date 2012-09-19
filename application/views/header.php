@@ -1,7 +1,6 @@
 <?php
 
 $this->load->helper('url');
-$environment = $this->config->item('storage') === 's3' ? 'http://'.$this->config->item('bucket', 's3') : '';
 
 ?>
 
@@ -12,9 +11,9 @@ $environment = $this->config->item('storage') === 's3' ? 'http://'.$this->config
 	<meta name="Author" content="Brooks Swinnerton, brooks@rockthepost.com" />
 	<meta name="Description" content="babblings of the internet, all in one place." />
 	<meta property="og:title" content="babblings of the internet" />
-	<meta property="og:type" content="article" />
+	<meta property="og:type" content="blog" />
 	<meta property="og:url" content="<?php echo site_url().$this->uri->uri_string(); ?>" />
-	<meta property="og:image" content="<?php echo $environment."/images/posts/".$post[0]['content']; ?>" />
+	<meta property="og:image" content="" />
 	<meta property="og:site_name" content="babblings." />
 	<meta property="og:description" content="babblings of the internet" />
 	<title>babblings of thee</title>
