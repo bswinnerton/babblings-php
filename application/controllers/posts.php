@@ -32,7 +32,7 @@ class Posts extends CI_Controller
 			show_404();
 		}
 		
-		$this->load->view('header');
+		$this->load->view('header', $data);
 		$this->load->view('posts/view', $data);
 		$this->load->view('footer');
 	}
