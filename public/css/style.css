@@ -30,14 +30,24 @@ body {
 	float:left;
 }
 
-#header_inner a {
+#header_inner h1 a {
 	text-decoration: none;
-	color:#3BAFCC;
+	color: #3BAFCC;
 }
 
-#header_inner a:hover {
+#header_inner h1 a:hover {
 	text-decoration: none;
-	color:#2b83a0;
+	color: #2b83a0;
+}
+
+#header_inner #links a {
+	text-decoration: none;
+	color: #000000;
+}
+
+#header_inner #links a:hover {
+	text-decoration: none;
+	color: #2b83a0;
 }
 
 #header_inner #links li {
@@ -142,4 +152,13 @@ input {
     bottom: 0;
     border: 1px solid;
     border-color: transparent #efe4e4;
+}
+
+#underConstruction {
+	font-family: 'Lobster', cursive;
+	text-align: center;
+	font-size: 54px;
+	vertical-align: middle;
+	color: #333;
+	margin-top: 15%;
 }

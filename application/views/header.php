@@ -94,9 +94,9 @@ $this->load->helper('url');
 			</div>
 			<div id="links">
 				<ul>
-					<li>Login</li>
-					<li>Help</li>
-					<li>Blog</li>
+					<li><a href="<?php echo base_url(); ?>login">Login</a></li>
+					<li><a href="<?php echo base_url(); ?>help">Help</a></li>
+					<li><a href="<?php echo base_url(); ?>blog">Blog</a></li>
 				</ul>
 			</div>
 		</div>
