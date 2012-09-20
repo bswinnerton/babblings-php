@@ -42,6 +42,8 @@ $route['default_controller'] = "posts";
 $route['404_override'] = '';
 
 $route['posts/view'] = "posts";
+$route['login'] = "auth/login";
+$route['register'] = "auth/register";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
