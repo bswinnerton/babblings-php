@@ -43,9 +43,11 @@ $route['404_override'] = '';
 
 # Catch if no parameters were passed
 $route['posts/view'] = "posts";
-$route['posts/page'] = "postS";
+$route['posts/page'] = "posts";
 $route['posts/delete'] = "posts";
 $route['posts/undelete'] = "posts";
+$route['login'] = "auth/login";
+$route['register'] = "auth/register";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
