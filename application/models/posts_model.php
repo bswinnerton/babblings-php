@@ -186,4 +186,28 @@ class Posts_model extends CI_Model
 		return $this->db->insert('posts', $data);
 	}
 	
+	public function delete($post)
+	{
+		// Data to be pushed to database
+		$data = array (
+			'is_deleted' => "1"
+		);
+		
+		$this->db->where('id_post', $post);
+		
+		return $this->db->update('posts', $data);
+	}
+	
+	public function unDelete($post)
+	{
+		// Data to be pushed to database
+		$data = array (
+			'is_deleted' => "0"
+		);
+		
+		$this->db->where('id_post', $post);
+		
+		return $this->db->update('posts', $data);
+	}
+	
 }

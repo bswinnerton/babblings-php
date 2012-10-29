@@ -112,4 +112,32 @@ class Posts extends CI_Controller
 		}
 	}
 	
+	public function delete($slug)
+	{	
+		if ($this->posts_model->delete($slug)) {
+			$this->load->view('header');	
+			$this->load->view('posts/success');
+			$this->load->view('footer');
+		}
+		else {
+			$this->load->view('header');	
+			$this->load->view('posts/failure');
+			$this->load->view('footer');
+		}
+	}
+	
+	public function undelete($slug)
+	{	
+		if ($this->posts_model->unDelete($slug)) {
+			$this->load->view('header');	
+			$this->load->view('posts/success');
+			$this->load->view('footer');
+		}
+		else {
+			$this->load->view('header');	
+			$this->load->view('posts/failure');
+			$this->load->view('footer');
+		}
+	}
+	
 }
