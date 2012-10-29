@@ -51,7 +51,12 @@ class Files_model extends CI_Model
 		$ratio = $height / $width;
 		$thumbnailHeight = ceil($ratio * 280);
 		
-		return array('width' => $width, 'height' => $height, 'adjustedHeight' => $thumbnailHeight, 'ratio' => $ratio);
+		return array(
+			'width' => $width, 
+			'height' => $height, 
+			'adjustedHeight' => $thumbnailHeight, 
+			'ratio' => $ratio
+		);
 	}
 	
 	public function createThumbnail($source, $destination, $height)
