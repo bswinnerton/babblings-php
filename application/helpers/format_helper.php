@@ -22,7 +22,7 @@ function formatType($id, $type, $content, $width, $height, $view, $environment)
 			$content = "<iframe width=\"280\" height=\"158\" src=\"http://www.youtube.com/embed/".$content."?showinfo=0\" frameborder=\"0\"></iframe>";
 			break;
 		case "vimeo":
-			$content = "<iframe width=\"280\" height=\"158\" src=\"http://player.vimeo.com/video/".$content."?portrait=0\" frameborder=\"0\" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>";
+			$content = "<iframe width=\"280\" height=\"158\" src=\"http://player.vimeo.com/video/".$content."?portrait=0&byline=0&title=0\" frameborder=\"0\" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>";
 			break;			
 		case "spotify":
 			$content = "<iframe src=\"https://embed.spotify.com/?uri=spotify:track:".$content."&amp;view=coverart\" width=\"280\" height=\"360\" frameborder=\"0\" allowtransparency=\"true\"></iframe>";
