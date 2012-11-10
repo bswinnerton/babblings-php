@@ -78,6 +78,10 @@ class Posts_model extends CI_Model
 		{
 			return "spotify";
 		}
+		elseif (strpos($content, "website:") !== FALSE)
+		{
+			return "parse";
+		}
 		else 
 		{
 			return "text";
@@ -184,6 +188,20 @@ class Posts_model extends CI_Model
 		);
 		
 		return $this->db->insert('posts', $data);
+	}
+	
+	public function showParsed()
+	{		
+		$website = substr($this->input->post('content'), 8);
+		
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $website);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_HEADER, 0);
+		$output = curl_exec($ch);
+		curl_close($ch);
+		
+		echo htmlspecialchars($output);
 	}
 	
 	public function delete($post)
