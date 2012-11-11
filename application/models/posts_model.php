@@ -190,17 +190,22 @@ class Posts_model extends CI_Model
 		return $this->db->insert('posts', $data);
 	}
 	
-	public function parseWebsite()
-	{
-		
+	public function downloadPage(){
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $this->input->post('content'));
+		curl_setopt($ch, CURLOPT_FAILONERROR, 1);
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($ch, CURLOPT_HEADER, 0);
-		$output = curl_exec($ch);
+		curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+		$output = curl_exec($ch);			 
 		curl_close($ch);
-		
-		echo htmlspecialchars($output);
+		return $output;
+	}
+	
+	public function parseWebsite($page)
+	{
+		//http://www.ecliptik.net/en/html-dom.html
+		echo htmlspecialchars($page);
 	}
 	
 	public function delete($post)
