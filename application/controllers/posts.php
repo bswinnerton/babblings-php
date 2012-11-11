@@ -108,8 +108,8 @@ class Posts extends CI_Controller
 					$this->load->view('posts/success');
 					$this->load->view('footer');
 					break;
-				case "parse":
-					$this->posts_model->showParsed();
+				case "website":
+					$this->posts_model->parseWebsite();
 					break;
 			}
 		}
