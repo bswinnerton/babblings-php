@@ -109,7 +109,8 @@ class Posts extends CI_Controller
 					$this->load->view('footer');
 					break;
 				case "website":
-					$this->posts_model->parseWebsite();
+					$page = $this->posts_model->downloadPage();
+					$this->posts_model->parseWebsite($page);
 					break;
 			}
 		}
