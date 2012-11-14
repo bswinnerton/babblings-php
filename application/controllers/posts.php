@@ -108,6 +108,13 @@ class Posts extends CI_Controller
 					$this->load->view('posts/success');
 					$this->load->view('footer');
 					break;
+				case "definition":
+					$word = $this->posts_model->getDefinition($this->input->post('content'));
+					$this->posts_model->addDefinitionPost($word);
+					$this->load->view('header');	
+					$this->load->view('posts/success');
+					$this->load->view('footer');
+					break;
 			}
 		}
 	}
