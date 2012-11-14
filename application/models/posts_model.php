@@ -78,6 +78,10 @@ class Posts_model extends CI_Model
 		{
 			return "spotify";
 		}
+		elseif (strpos($content, "define:") !== FALSE)
+		{
+			return "definition";
+		}
 		else 
 		{
 			return "text";
@@ -185,6 +189,21 @@ class Posts_model extends CI_Model
 		
 		return $this->db->insert('posts', $data);
 	}
+
+	public function addDefinitionPost($definition)
+	{
+		// Data to be pushed to database
+		$data = array (
+			'id_author' => "1",
+			'status' => "active",
+			'date_created' => date('Y-m-d H:i:s'),
+			'type' => "definition",
+			'content' => $definition 
+		);
+		
+		return $this->db->insert('posts', $data);
+	}
+	
 	
 	public function delete($post)
 	{
@@ -208,6 +227,11 @@ class Posts_model extends CI_Model
 		$this->db->where('id_post', $post);
 		
 		return $this->db->update('posts', $data);
+	}
+
+	public function getDefinition($word)
+	{
+		
 	}
 	
 }
