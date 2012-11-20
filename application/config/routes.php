@@ -42,6 +42,8 @@ $route['default_controller'] = "posts";
 $route['404_override'] = '';
 
 $route['posts/view'] = "posts";
+$route['posts/delete'] = "posts";
+$route['posts/undelete'] = "posts";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
