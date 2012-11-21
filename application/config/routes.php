@@ -41,7 +41,9 @@
 $route['default_controller'] = "posts";
 $route['404_override'] = '';
 
+# Catch if no parameters were passed
 $route['posts/view'] = "posts";
+$route['posts/page'] = "postS";
 $route['posts/delete'] = "posts";
 $route['posts/undelete'] = "posts";
 

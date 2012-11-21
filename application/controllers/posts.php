@@ -38,7 +38,7 @@ class Posts extends CI_Controller
 	}
 	
 	// View page
-	public function page($page = 1)
+	public function page($page)
 	{
 		$data['post'] = $this->posts_model->getPosts($page, $slug = FALSE);
 		
