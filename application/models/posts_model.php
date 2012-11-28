@@ -232,7 +232,16 @@ class Posts_model extends CI_Model
 	public function getDefinition($word)
 	{
 		preg_match('/:(.*)/', $word, $rawWord);
-		return $rawWord[1];
+
+		$wordNikAPIURL = "http://api.wordnik.com//v4/word.json/".$rawWord[1]."/definitions?includeRelated=false&includeTags=false&limit=1&useCanonical=true";
+		/*
+			API Call fails here because 401 unauthorized
+		*/
+		$wordNikiAPIResponse = file_get_contents($wordNikAPIURL);
+		$wordNikAPIResult = json_decode($wordNikAPIResponse, TRUE);
+		echo $wordNikAPIResult;
+		//return $wordNikAPIResult;
+		//return $definition;
 	}
 	
 }

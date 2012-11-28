@@ -110,11 +110,10 @@ class Posts extends CI_Controller
 					break;
 				case "definition":
 					$word = $this->posts_model->getDefinition($this->input->post('content'));
-					echo "word is: ".$word;
-					$this->posts_model->addDefinitionPost($word);
-					$this->load->view('header');	
-					$this->load->view('posts/success');
-					$this->load->view('footer');
+					//$this->posts_model->addDefinitionPost($word);
+					//$this->load->view('header');	
+					//$this->load->view('posts/success');
+					//$this->load->view('footer');
 					break;
 			}
 		}
