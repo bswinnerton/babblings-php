@@ -233,14 +233,13 @@ class Posts_model extends CI_Model
 	{
 		preg_match('/:(.*)/', $word, $rawWord);
 
-		$wordNikAPIURL = "http://api.wordnik.com//v4/word.json/".$rawWord[1]."/definitions?includeRelated=false&includeTags=false&limit=1&useCanonical=true";
+		$wordnikAPIURL = "http://api.wordnik.com//v4/word.json/".$rawWord[1]."/definitions?includeRelated=false&includeTags=false&limit=1&useCanonical=true";
 		/*
 			API Call fails here because 401 unauthorized
 		*/
-		$wordNikiAPIResponse = file_get_contents($wordNikAPIURL);
-		$wordNikAPIResult = json_decode($wordNikAPIResponse, TRUE);
-		echo $wordNikAPIResult;
-		//return $wordNikAPIResult;
+		$wordnikiAPIResponse = file_get_contents($wordnikAPIURL);
+		$wordnikAPIResult = json_decode($wordnikAPIResponse, TRUE);
+		echo $wordnikAPIResult;
 		//return $definition;
 	}
 	
