@@ -231,7 +231,8 @@ class Posts_model extends CI_Model
 
 	public function getDefinition($word)
 	{
-		
+		preg_match('/:(.*)/', $word, $rawWord);
+		return $rawWord[1];
 	}
 	
 }
