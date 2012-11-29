@@ -2,7 +2,7 @@
 babblin.gs
 --------
 
-[Download][dl] (524 KB) -- 28 Aug 2012
+[Download][dl] 
 
 [dl]: https://github.com/bswinnerton/babblings/tarball/master
 
