@@ -1,5 +1,13 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); 
 
+
+/*
+
+	Wordnik Library for querying word definitions through their API
+
+*/
+
+
 class wordnik {
 
 	public static $POST = "POST";
