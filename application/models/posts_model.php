@@ -37,9 +37,14 @@ class Posts_model extends CI_Model
 			$query = $this->db->get('posts');
 			return $query->result_array();
 			
-		} else {
+		} else if ($slug !== FALSE) {
 			
-			$query = $this->db->get_where('posts', array('id_post' => $slug));
+			$this->db->select('id_post, type, title, content, width, height, width_thumbnail, height_thumbnail');
+			$this->db->where('is_deleted !=', 1);
+			$this->db->where('status', 'active');
+			$this->db->where('id_post', $slug);
+			
+			$query = $this->db->get('posts');
 			return $query->result_array();
 			
 		}
